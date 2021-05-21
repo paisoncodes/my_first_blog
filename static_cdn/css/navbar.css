@@ -1,0 +1,106 @@
+a{
+    text-decoration: none;
+    padding: 1vw;
+    color: black;
+}
+
+nav{
+    width: 100vw;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    
+    a{
+        display: block;
+    }
+
+    button{
+        /*makes the button visible*/
+        display: block;
+        
+        /*since we are here, we can style it a little bit!*/
+        padding: 2vw;
+        font-size: 3vh;
+        background-color: #AFE0FF;
+        border: none;
+        
+        /*outline none removes the default blue border that appears anytime you click on the button*/
+        outline: none;
+        
+        cursor: pointer;
+    
+        /*this put the button on the left*/
+        align-self: flex-start;
+    }
+}  
+
+
+.topnav-right{
+    float: right;
+}
+.topnav-left{
+    float: left;
+    padding: 0.5;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+    padding-right: 5rem;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 0.5rem;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(180, 180, 180);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+  
+  /* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.main {
+    min-height: 100vh;
+    height: 100%;
+}

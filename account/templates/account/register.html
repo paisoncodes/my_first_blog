@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %} 
+<style type="text/css">
+    .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
+    
+    .form-signin .form-floating:focus-within {
+    z-index: 2;
+    }
+    
+    .form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    
+    .form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    }
+    
+    .h3{
+        text-align: center;
+    }
+
+</style>
+<form class="form-signin" method="post">
+    {% csrf_token %}
+    <div class="d-flex flex-column pb-3">
+        <img class="image-fluid mx-auto d-block" src="{% static 'img/logo.png' %}" alt="" width="150" height="72">
+    </div>
+    <h1 class="h3 mb-3 fw-normal">Register an account</h1>
+
+    <div class="form-floating">
+        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" autofocus>
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" class="form-control" name="username" id="floatingUsername" placeholder="username">
+        <label for="floatingUsername">Username</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" name="password1" id="floatingPassword1" placeholder="Confirm Password">
+        <label for="floatingPassword1">Confirm Password</label>
+    </div>
+
+    {% for field in registration_form %}
+        {% for error in field.errors %}
+            <small style="color: red">{{ error }}</small>
+        {% endfor %}
+    {% endfor %}
+
+    {% if registration_form.non_field_errors %}
+        <div style="color: red;">
+            <p>
+                {{ registration_form.non_field_errors }}
+            </p>
+        </div>
+    {% endif %}
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+</form>
+
+
+{% endblock %}
