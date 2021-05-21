@@ -45,9 +45,10 @@ def edit_blog_view(request, slug):
         return redirect('must_authenticate')
     
     blog_post = get_object_or_404(BlogPost, slug=slug)
-    if blog_post.author != user:
-        return HttpResponse('You are not the author of that post!')
     
+    if blog_post.author != user:
+        return HttpResponse("You are not the author of that post.")
+   
     if request.POST:
         form = UpdateBlogForm(request.POST or None, request.FILES or None, instance=blog_post)
         if form.is_valid():
@@ -56,17 +57,17 @@ def edit_blog_view(request, slug):
 
             context['success_message'] = 'Update Successful!'
             blog_post = obj
-        form = UpdateBlogForm(
-            initial = {
-                "title": blog_post.title,
-                "body": blog_post.body,
-                "image": blog_post.image
-            }
-        )
+    form = UpdateBlogForm(
+        initial = {
+            "title": blog_post.title,
+            "body": blog_post.body,
+            "image": blog_post.image
+        }
+    )
 
-        context['form'] = form
+    context['form'] = form
 
-        return render(request, 'articles/edit_blog.html', context)
+    return render(request, 'articles/edit_blog.html', context)
 
 def get_blog_queryset(query=None):
     queryset = []
