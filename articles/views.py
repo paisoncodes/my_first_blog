@@ -1,10 +1,12 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db.models import Q
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
 from .models import BlogPost
 from .forms import CreateBlogPostForm, UpdateBlogForm
 from account.models import Account
+from django.views.generic import DeleteView
 
 
 def create_blog_view(request):
@@ -21,8 +23,7 @@ def create_blog_view(request):
         obj.author = author
         obj.save()
 
-        form = CreateBlogPostForm()
-
+    form = CreateBlogPostForm()
     context['form'] = form
 
     return render(request, 'articles/create_blog.html', context)
@@ -36,6 +37,22 @@ def detail_blog_view(request, slug):
     context['blog_post'] = blog_post
 
     return render(request, 'articles/detail_blog.html', context)
+
+def delete_blog_view(request, slug):
+    context = {}
+
+    user = request.user
+    if not user.is_authenticated:
+        return redirect("must_authenticate")
+    
+    obj = get_object_or_404(BlogPost, slug=slug)
+
+    if request.method == 'POST':
+        obj.delete()
+        return redirect('home')
+    
+    return render(request, 'articles/delete_blog.html', context)
+
 
 def edit_blog_view(request, slug):
     context = {}

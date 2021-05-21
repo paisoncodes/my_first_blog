@@ -60,7 +60,8 @@
 					</div>
 				{% endfor %}
 			<!-- End Blog posts-->
-			{% else %} 
+			{% endif %}
+			{% if query %} 
 				<div class="blog-post-container">
 					{% include 'articles/snippets/blog_post_snippet.html' with query=query %}
 				</div>

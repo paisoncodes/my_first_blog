@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex">
+        <div class="m-auto">
+            <form action="", method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete this post?</p>
+                <button class="submit-button btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
