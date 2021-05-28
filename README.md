@@ -8,4 +8,6 @@ New users can register with the register button while existing can login instead
 
 Only the creator of a post can edit or delete it.
 
+The media storage is not functioning right but it'd be corrected as soon as possible
+
 link = paisonblog.herokuapp.com
