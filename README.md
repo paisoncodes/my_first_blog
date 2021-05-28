@@ -10,4 +10,4 @@ Only the creator of a post can edit or delete it.
 
 The media storage is not functioning right but it'd be corrected as soon as possible
 
-link = paisonblog.herokuapp.com
+link = https://www.paisonblog.herokuapp.com
